@@ -6,6 +6,7 @@ import { ThemeToggle } from '@/components/ThemeToggle'
 import { Button } from '@/components/ui/button'
 import { useAuth } from '@/context/Authentication'
 import { useCurrentUser } from '@/hooks/query/user'
+import { LogOut } from 'lucide-react'
 
 const DashboardNavbar: React.FC = () => {
   const { user } = useCurrentUser()
@@ -20,7 +21,10 @@ const DashboardNavbar: React.FC = () => {
         <div className="ml-auto flex items-center gap-2 sm:gap-4">
           <ThemeToggle />
           {user ? (
-            <Button onClick={signOut}>Logout</Button>
+            <Button onClick={signOut}>
+              <span className="hidden sm:block pr-2">Logout</span>
+              <LogOut />
+            </Button>
           ) : (
             <Button onClick={() => router.push('/signin')} className="">
               Login
